@@ -15,7 +15,7 @@ class Decryptor
 
   def decrypt
     encrypted_message = read_file
-    decrypted_message = Rotor.new.rotate(encrypted_message, generate_offsets, :decrypt)
+    decrypted_message = rotate(encrypted_message, generate_offsets, :decrypt)
     output(decrypted_message)
     print_info
   end
@@ -28,6 +28,7 @@ class Decryptor
   def rotate(message, rotation_calculator, task)
     encrypted_message = Rotor.new.rotate(message, rotation_calculator, task)
   end
+
 
   def print_info
     puts "Created '#{@decrypted_file_name}' with the key #{@key} and date #{@date}"
