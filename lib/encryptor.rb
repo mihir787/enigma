@@ -1,3 +1,9 @@
+require_relative 'date_offset'
+require_relative 'rotation_calculator'
+require_relative 'rotor'
+require_relative 'encryptor'
+require_relative 'key'
+
 class Encryptor
 
   attr_reader :message_file_name, :encrypted_file_name
@@ -37,4 +43,10 @@ class Encryptor
   def read_file
     File.open(message_file_name).read
   end
+end
+
+if __FILE__ == $0
+  message_file_name = ARGV[0]
+  encrypted_file_name = ARGV[1]
+  Encryptor.new(message_file_name, encrypted_file_name).encrypt
 end
