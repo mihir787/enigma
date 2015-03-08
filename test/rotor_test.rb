@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/rotor'
+require_relative 'test_helper'
+require_relative '../lib/rotor'
 
 class RotorTest < Minitest::Test
 

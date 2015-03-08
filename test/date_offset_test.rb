@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/date_offset'
+require_relative 'test_helper'
+require_relative '../lib/date_offset'
 
 class DateOffsetTest < Minitest::Test
 

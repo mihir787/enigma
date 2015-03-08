@@ -1,14 +1,10 @@
-require_relative 'key'
-require_relative 'date_offset'
-require_relative 'rotation_calculator'
-require_relative 'rotor'
-
 class Encryptor
-  attr_reader :message
 
-  def initialize(input, encryption_file)
-    @message = input
-    @encryption_file = encryption_file
+  attr_reader :message_file_name
+
+  def initialize(message_file_name, encrypted_file_name)
+    @message_file_name = message_file_name
+    @encrypted_file_name = encrypted_file_name
   end
 
   def encrypt
@@ -16,19 +12,23 @@ class Encryptor
     puts key
     date_offset = DateOffset.new.calculate_date_offset
     rotation_calculator = RotationCalculator.new(key, date_offset).aggregate_rotations_guide
+    message = read_file
     rotor = Rotor.new
-    encrypted_message = rotor.rotate(@message, rotation_calculator, :encrypt)
+    encrypted_message = rotor.rotate(message, rotation_calculator, :encrypt)
     output(encrypted_message)
   end
 
   def output(encrypted_message)
-    file = File.open(@encryption_file, 'w') do |file|
+    file = File.open(@encrypted_file_name, 'w') do |file|
       file.write(encrypted_message)
     end
   end
+
+  def read_file
+    File.open(message_file_name).read
+  end
 end
 
-encrypt = Encryptor.new("rex, is the best.", "./encrypted.txt").encrypt
 
 # I. take in input (X)
 # II. generate key and date offset (X)

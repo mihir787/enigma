@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/character_map'
+require_relative 'test_helper'
+require_relative '../lib/character_map'
 
 class CharacterMapTest < Minitest::Test
 

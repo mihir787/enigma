@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/rotation_calculator'
+require_relative 'test_helper'
+require_relative '../lib/rotation_calculator'
 
 class RotationCalculatorTest < Minitest::Test
 
