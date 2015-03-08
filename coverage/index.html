@@ -14,18 +14,18 @@
       <img src="./assets/0.9.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-07T18:02:03-07:00">2015-03-07T18:02:03-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-08T12:33:31-06:00">2015-03-08T12:33:31-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">50.0%</span></span>
+    (<span class="covered_percent"><span class="red">55.56%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.7
+         0.6
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>1</b> files in total.
     <b>18</b> relevant lines. 
-    <span class="green"><b>9</b> lines covered</span> and
-    <span class="red"><b>9</b> lines missed </span>
+    <span class="green"><b>10</b> lines covered</span> and
+    <span class="red"><b>8</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -51,13 +51,13 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#fb94053f435f1d7a2b4be4b6b1d08adf27e4b533" class="src_link" title="lib/encryptor.rb">lib/encryptor.rb</a></td>
-        <td class="red strong">50.0 %</td>
-        <td>41</td>
+        <td class="strong"><a href="#e194fd6ef3f78a4e2794d2f93c20dd8f838caafb" class="src_link" title="lib/decryptor.rb">lib/decryptor.rb</a></td>
+        <td class="red strong">55.56 %</td>
+        <td>29</td>
         <td>18</td>
-        <td>9</td>
-        <td>9</td>
-        <td>0.7</td>
+        <td>10</td>
+        <td>8</td>
+        <td>0.6</td>
       </tr>
       
     </tbody>
@@ -76,14 +76,14 @@
     
       <div class="source_files">
       
-        <div class="source_table" id="fb94053f435f1d7a2b4be4b6b1d08adf27e4b533">
+        <div class="source_table" id="e194fd6ef3f78a4e2794d2f93c20dd8f838caafb">
   <div class="header">
-    <h3>lib/encryptor.rb</h3>
-    <h4><span class="red">50.0 %</span> covered</h4>
+    <h3>lib/decryptor.rb</h3>
+    <h4><span class="red">55.56 %</span> covered</h4>
     <div>
       <b>18</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
-      <span class="red"><b>9</b> lines missed.</span>
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>8</b> lines missed.</span>
     </div>
   </div>
   
@@ -93,247 +93,175 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">class Encryptor</code>
+          <code class="ruby">class Decryptor</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="2">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
+        <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  attr_reader :message_file_name</code>
+          <code class="ruby">  attr_reader :encrypted_file_name</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="3">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def initialize(encrypted_file_name, decrypted_file_name, key, date)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">  def initialize(message_file_name, encrypted_file_name)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="6">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @message_file_name = message_file_name</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="7">
-          <span class="hits">2</span>
-          
           <code class="ruby">    @encrypted_file_name = encrypted_file_name</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
           
+          <code class="ruby">    @decrypted_file_name = decrypted_file_name</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    @key = key</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @date = date</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
+        <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
-          <code class="ruby">  def encrypt</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="11">
-          
-          
-          <code class="ruby">    key = Key.new.rand_key</code>
+          <code class="ruby">  def decrypt</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="12">
           
           
-          <code class="ruby">    puts key</code>
+          <code class="ruby">    date_offset = DateOffset.new(@date).calculate_date_offset</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="13">
           
           
-          <code class="ruby">    date_offset = DateOffset.new.calculate_date_offset</code>
+          <code class="ruby">    encrypted_message = read_file</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="14">
           
           
-          <code class="ruby">    rotation_calculator = RotationCalculator.new(key, date_offset).aggregate_rotations_guide</code>
+          <code class="ruby">    rotation_calculator = RotationCalculator.new(@key.chars, date_offset).aggregate_rotations_guide</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="15">
           
           
-          <code class="ruby">    rotor = Rotor.new</code>
+          <code class="ruby">    decrypted_message = Rotor.new.rotate(encrypted_message, rotation_calculator, :decrypt)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="16">
           
           
-          <code class="ruby">    encrypted_message = rotor.rotate(@message_file_name, rotation_calculator, :encrypt)</code>
+          <code class="ruby">    output(decrypted_message)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">    output(encrypted_message)</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
+        <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">  def output(encrypted_message)</code>
+          <code class="ruby">  def output(decrypted_message)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
+          
+          <code class="ruby">    file = File.open(@decrypted_file_name, &#39;w&#39;) do |file|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="21">
           
           
-          <code class="ruby">    file = File.open(@encrypted_file_name, &#39;w&#39;) do |file|</code>
+          <code class="ruby">      file.write(decrypted_message)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
-          
-          <code class="ruby">      file.write(encrypted_message)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
+        <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
           <code class="ruby">  def read_file</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="27">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="26">
           
-          <code class="ruby">    File.open(message_file_name).read</code>
+          
+          <code class="ruby">    File.open(encrypted_file_name).read</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="32">
-          
-          
-          <code class="ruby"># I. take in input (X)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby"># II. generate key and date offset (X)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="34">
-          
-          
-          <code class="ruby"># III. find rotation calculation(X)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby"># IV. rotate- which returns strings</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby"># V. put the returned string from rotate in the decrypt.txt file</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby"># VI. print game info ex.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
-          <code class="ruby"># Created &#39;encrypted.txt&#39; with the key 82648 and date 030415</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">#</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby">#</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
-          
-          
-          <code class="ruby"># asssume the input coming in is a string.</code>
         </li>
       
     </ol>

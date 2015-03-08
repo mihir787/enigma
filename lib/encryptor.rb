@@ -1,6 +1,6 @@
 class Encryptor
 
-  attr_reader :message_file_name
+  attr_reader :message_file_name, :encrypted_file_name
 
   def initialize(message_file_name, encrypted_file_name)
     @message_file_name = message_file_name
@@ -8,14 +8,24 @@ class Encryptor
   end
 
   def encrypt
-    key = Key.new.rand_key
-    puts key
-    date_offset = DateOffset.new.calculate_date_offset
-    rotation_calculator = RotationCalculator.new(key, date_offset).aggregate_rotations_guide
-    message = read_file
-    rotor = Rotor.new
-    encrypted_message = rotor.rotate(message, rotation_calculator, :encrypt)
+    encrypted_message = rotate(read_file, generate_offsets, :encrypt)
     output(encrypted_message)
+  end
+
+  def generate_offsets
+    key = Key.new.rand_key
+    date_offset = DateOffset.new
+    calculated_date_offset = date_offset.calculate_date_offset
+    print_offsets(key.join, date_offset.given_date)
+    rotation_calculator = RotationCalculator.new(key, calculated_date_offset).aggregate_rotations_guide
+  end
+
+  def rotate(message, rotation_calculator, task)
+    encrypted_message = Rotor.new.rotate(message, rotation_calculator, task)
+  end
+
+  def print_offsets(key, date)
+    puts "Created '#{@encrypted_file_name}' with the key #{key} and date #{date}"
   end
 
   def output(encrypted_message)
@@ -28,15 +38,3 @@ class Encryptor
     File.open(message_file_name).read
   end
 end
-
-
-# I. take in input (X)
-# II. generate key and date offset (X)
-# III. find rotation calculation(X)
-# IV. rotate- which returns strings
-# V. put the returned string from rotate in the decrypt.txt file
-# VI. print game info ex.
-# Created 'encrypted.txt' with the key 82648 and date 030415
-#
-#
-# asssume the input coming in is a string.
