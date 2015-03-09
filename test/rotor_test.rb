@@ -26,14 +26,14 @@ class RotorTest < Minitest::Test
     assert_equal [["G", "o", " ", "f"], ["e", "t", "c", "h"], [" ", "t", "h", "e"], [" ", "b", "a", "l"], ["l","."]], rotor.format_message(message)
   end
 
-  def test_rotate_index_for_encryption
+  def test_change_index_for_encryption
     rotor = Rotor.new
-    assert_equal 35, rotor.rotate_index_for_encryption("u", 2, {0=>50, 1=>17, 2=>54, 3=>26})
+    assert_equal 35, rotor.change_index_for_encryption("u", 2, {0=>50, 1=>17, 2=>54, 3=>26})
   end
 
-  def test_rotate_index_for_decryption
+  def test_change_index_for_decryption
     rotor = Rotor.new
-    assert_equal 20, rotor.rotate_index_for_decryption(".", 1, {0=>50, 1=>17, 2=>54, 3=>26})
+    assert_equal 20, rotor.change_index_for_decryption(".", 1, {0=>50, 1=>17, 2=>54, 3=>26})
   end
 
   def test_update_index_value_for_encrypt

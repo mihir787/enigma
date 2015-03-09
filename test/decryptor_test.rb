@@ -44,7 +44,7 @@ class DecryptorTest < Minitest::Test
   def test_it_can_read_contents_of_another_file
     decryptor = Decryptor.new("test_file2.txt", "test_decrypted.txt", @key, @date)
 
-    assert_equal "ruby is awesome 2", decryptor.read_file
+    assert_equal "i love spongebob square pants, because he is cool..end..", decryptor.read_file
   end
 
   def test_it_can_generate_offsets

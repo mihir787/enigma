@@ -30,11 +30,11 @@ class Rotor
     @character_map.index(char)
   end
 
-  def rotate_index_for_encryption(char, index, rotation_scale)
+  def change_index_for_encryption(char, index, rotation_scale)
     ((current_character_index(char) + rotation_scale[index]) % 39)
   end
 
-  def rotate_index_for_decryption(char, index, rotation_scale)
+  def change_index_for_decryption(char, index, rotation_scale)
     subtracted_index = (current_character_index(char) - rotation_scale[index])
     if subtracted_index < 0
       (subtracted_index.abs % 39) * -1
@@ -45,9 +45,9 @@ class Rotor
 
   def update_index_value(char, index, rotation_scale, task)
     if task == :encrypt
-      rotate_index_for_encryption(char, index, rotation_scale)
+      change_index_for_encryption(char, index, rotation_scale)
     else
-      rotate_index_for_decryption(char, index, rotation_scale)
+      change_index_for_decryption(char, index, rotation_scale)
     end
   end
 
