@@ -37,13 +37,13 @@ class Crack
       key = pad_zeros(n)
       decrypted_message = decrypt(key)
       if match?(decrypted_message)
-        output(decrypted_message)
         print_results(key)
+        output(decrypted_message)
         break
       end
     end
   end
-  
+
 end
 
 if __FILE__ == $0

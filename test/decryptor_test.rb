@@ -8,7 +8,7 @@ class DecryptorTest < Minitest::Test
     @test_file.write("ruby is awesome")
     @test_file.close
     @test_file2 = File.new("test_file2.txt", "w+")
-    @test_file2.write("ruby is awesome 2")
+    @test_file2.write("i love spongebob square pants, because he is cool..end..")
     @test_file2.close
     @test_file3 = File.new("test_file3.txt", "w+")
     @test_file3.close
@@ -73,6 +73,6 @@ class DecryptorTest < Minitest::Test
     decryptor.decrypt
     assert_equal 15, File.open("test_file3.txt").read.size
   end
-  
+
 
 end
