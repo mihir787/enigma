@@ -1,7 +1,7 @@
 require_relative 'test_helper'
-require_relative '../lib/crack'
+require_relative '../lib/cracker'
 
-class CrackTest < Minitest::Test
+class CrackerTest < Minitest::Test
 
   def setup
     @test_file = File.new("test_file.txt", "w+")
@@ -29,11 +29,11 @@ class CrackTest < Minitest::Test
 
 
   def test_it_exists
-    assert Crack.new("test_file.txt", "test_file2.txt", @date)
+    assert Cracker.new("test_file.txt", "test_file2.txt", @date)
   end
 
   def test_it_takes_in_encrypted_file_name_cracked_file_name_and_date
-    crack = Crack.new("test_file.txt", "test_file2.txt", @date)
+    crack = Cracker.new("test_file.txt", "test_file2.txt", @date)
     assert_equal "080315", crack.date
     assert_equal "test_file.txt", crack.encrypted_file_name
     assert_equal "test_file2.txt", crack.cracked_file_name
@@ -41,30 +41,30 @@ class CrackTest < Minitest::Test
 
   def test_that_key_guess_can_be_padded_with_zeros
     number = "9"
-    crack = Crack.new("test_file.txt", "test_file2.txt", @date)
+    crack = Cracker.new("test_file.txt", "test_file2.txt", @date)
     assert_equal "00009", crack.pad_zeros(number)
     assert_equal "12525", crack.pad_zeros("12525")
   end
 
   def test_match?
-    crack = Crack.new("test_file.txt", "test_file2.txt", @date)
+    crack = Cracker.new("test_file.txt", "test_file2.txt", @date)
     assert crack.match?("fish is good..end..")
     refute crack.match?("fish")
   end
 
   def test_output
-    crack = Crack.new("test_file.txt", "test_file3.txt", @date)
+    crack = Cracker.new("test_file.txt", "test_file3.txt", @date)
     crack.output("fish is great..end..")
     assert_equal "fish is great..end..", File.open("test_file3.txt").read
   end
 
   def test_decrypt
-    crack = Crack.new("test_file.txt", "test_file3.txt", @date)
+    crack = Cracker.new("test_file.txt", "test_file3.txt", @date)
     assert_equal ".k1gr.fsum4a8c4ss148x1y", crack.decrypt('10891')
   end
 
   def test_crack
-    crack_test = Crack.new("test_file4.txt", "test_file2.txt", @date)
+    crack_test = Cracker.new("test_file4.txt", "test_file2.txt", @date)
     crack_test.crack
     assert_equal "rupert is a cool cat ..end..", File.open("test_file2.txt").read
   end

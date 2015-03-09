@@ -44,9 +44,3 @@ class Encryptor
     File.open(message_file_name).read
   end
 end
-
-if __FILE__ == $0
-  message_file_name = ARGV[0]
-  encrypted_file_name = ARGV[1]
-  Encryptor.new(message_file_name, encrypted_file_name).encrypt
-end

@@ -68,5 +68,4 @@ class EncryptorTest < Minitest::Test
     assert_equal 15, File.open("test_file3.txt").read.size
   end
 
-
 end

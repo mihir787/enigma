@@ -29,7 +29,6 @@ class Decryptor
     encrypted_message = Rotor.new.rotate(message, rotation_calculator, task)
   end
 
-
   def print_info
     puts "Created '#{@decrypted_file_name}' with the key #{@key} and date #{@date}"
   end
@@ -44,13 +43,4 @@ class Decryptor
     File.open(encrypted_file_name).read
   end
 
-end
-
-if __FILE__ == $0
-  encrypted_file_name = ARGV[0]
-  decrypted_file_name = ARGV[1]
-  key = ARGV[2]
-  date = ARGV[3]
-
-  Decryptor.new(encrypted_file_name, decrypted_file_name, key, date).decrypt
 end
