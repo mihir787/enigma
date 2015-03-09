@@ -70,8 +70,3 @@ class Rotor
     updated_message.join
   end
 end
-
-# rotor = Rotor.new
-# rot_scale = {"0"=>50, "1"=>17, "2"=>54, "3"=>26}
-# puts rotor.rotate("rubyr", rot_scale, :encrypt)
-# puts rotor.rotate("2.ql2.ql", rot_scale, :decrypt)
