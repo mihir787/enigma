@@ -31,12 +31,10 @@ class DateOffsetTest < Minitest::Test
     assert_equal "6566", date_offset.splice_final_four(1446566)
   end
 
-  # def test_can_caluculate_date_offset
-  #   #not sure how to test this
-  #   skip
-  #   date_offset = DateOffset.new
-  #   date = Time.gm(2015, 03, 03)
-  # end
+  def test_today_date
+    date_offset = DateOffset.new()
+    assert_equal 6, date_offset.today_date.size
+  end
 
   def test_can_take_in_a_date_when_initialized
     date_offset = DateOffset.new("030315")
@@ -53,10 +51,15 @@ class DateOffsetTest < Minitest::Test
     assert_equal 30315, date_offset.remove_leading_zero
   end
 
-  def test_calculate_date_offset_for_known_date
-    date_offset = DateOffset.new("171289")
-    assert_equal ["1", "5", "2", "1"], date_offset.calculate_date_offset
-    assert_equal "171289", date_offset.given_date
+  # def test_calculate_date_offset_for_known_date
+  #   date_offset = DateOffset.new("171289")
+  #   assert_equal ["1", "5", "2", "1"], date_offset.calculate_date_offset
+  #   # assert_equal "171289", date_offset.given_date
+  # end
+
+  def test_calculate_date_offset_for_unkown_date
+    date_offset = DateOffset.new()
+    assert_equal 4, date_offset.calculate_date_offset.size
   end
 
   def test_calculate_date_offset_for_known_date
@@ -66,5 +69,3 @@ class DateOffsetTest < Minitest::Test
   end
 
 end
-
-#how can you test todays date?

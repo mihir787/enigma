@@ -21,7 +21,7 @@ class RotationCalculator
   end
 
   def aggregate_rotations_guide(key = @key, date_offset = @date_offset)
-    combo = combine_rotations(key_rotation(key), date_offset)
+    combo = combine_rotations(key_rotation(key), @date_offset)
     {0 => combo[0], 1 => combo[1], 2 => combo[2], 3 => combo[3]}
   end
 end
