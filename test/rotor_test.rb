@@ -28,28 +28,28 @@ class RotorTest < Minitest::Test
 
   def test_rotate_index_for_encryption
     rotor = Rotor.new
-    assert_equal 37, rotor.rotate_index_for_encryption("u", 1, {"0"=>50, "1"=>17, "2"=>54, "3"=>26})
+    assert_equal 35, rotor.rotate_index_for_encryption("u", 2, {0=>50, 1=>17, 2=>54, 3=>26})
   end
 
   def test_rotate_index_for_decryption
     rotor = Rotor.new
-    assert_equal 20, rotor.rotate_index_for_decryption(".", 1, {"0"=>50, "1"=>17, "2"=>54, "3"=>26})
+    assert_equal 20, rotor.rotate_index_for_decryption(".", 1, {0=>50, 1=>17, 2=>54, 3=>26})
   end
 
   def test_update_index_value_for_encrypt
     rotor = Rotor.new
-    assert_equal 37, rotor.update_index_value("u", 1, {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :encrypt)
+    assert_equal 37, rotor.update_index_value("u", 1, {0=>50, 1=>17, 2=>54, 3=>26}, :encrypt)
   end
 
   def test_update_index_value_for_decrypt
     rotor = Rotor.new
-    assert_equal 20, rotor.update_index_value(".", 1, {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :decrypt)
+    assert_equal 20, rotor.update_index_value(".", 1, {0=>50, 1=>17, 2=>54, 3=>26}, :decrypt)
   end
 
   def test_collect_updated_index_values
     rotor = Rotor.new
-    assert_equal [28, 37, 16, 11], rotor.collect_updated_index_value([["r", "u", "b", "y"]], {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :encrypt)
-    assert_equal [-22, 20, -38, -15], rotor.collect_updated_index_value([["2", ".", "q", "l"]], {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :decrypt)
+    assert_equal [28, 37, 16, 11], rotor.collect_updated_index_value([["r", "u", "b", "y"]], {0=>50, 1=>17, 2=>54, 3=>26}, :encrypt)
+    assert_equal [-22, 20, -38, -15], rotor.collect_updated_index_value([["2", ".", "q", "l"]], {0=>50, 1=>17, 2=>54, 3=>26}, :decrypt)
   end
 
   def test_message_updates
@@ -60,9 +60,9 @@ class RotorTest < Minitest::Test
 
   def test_rotate
     rotor = Rotor.new
-    assert_equal "2.ql", rotor.rotate("ruby", {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :encrypt)
-    assert_equal "ruby", rotor.rotate("2.ql", {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :decrypt)
-    assert_equal "2.ql2.ql2", rotor.rotate("rubyrubyr", {"0"=>50, "1"=>17, "2"=>54, "3"=>26}, :encrypt)
+    assert_equal "2.ql", rotor.rotate("ruby", {0=>50, 1=>17, 2=>54, 3=>26}, :encrypt)
+    assert_equal "ruby", rotor.rotate("2.ql", {0=>50, 1=>17, 2=>54, 3=>26}, :decrypt)
+    assert_equal "2.ql2.ql2", rotor.rotate("rubyrubyr", {0=>50, 1=>17, 2=>54, 3=>26}, :encrypt)
   end
 
 end

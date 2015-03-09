@@ -9,21 +9,16 @@ class KeyTest < Minitest::Test
     assert key
   end
 
-  # def test_it_returns_an_empty_array (NO Longer APplicable)
-  #   key = Key.new
-  #   assert key.generate_key.empty?
-  # end
+  def test_generates_a_string
+    key1 = Key.new
+    assert key1.generate_key.is_a? Array
+    assert key1.generate_key.join.is_a? String
+  end
 
-  # def test_generates_one_random_number
-  #   not sure how to test
-  #   key = Key.new
-  #   assert key.generate_key.all? {|n| n < 10 && n >= 0}
-  # end
 
   def test_generates_five_random_numbers
     key1 = Key.new
     key2 = Key.new
-    #note that this doesnt necessisarily test random, comeback to
     rand_key = key1.generate_key
     assert 5, rand_key.size
     refute rand_key.all? {|n| n == rand_key[0]}
