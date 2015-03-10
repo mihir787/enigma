@@ -14,7 +14,7 @@ class DateOffset
   end
 
   def format_numerically(date)
-    @given_date = date.strftime("%d%m%y")
+    @given_date = date.strftime("%m%d%y")
   end
 
   def square(formated_date)

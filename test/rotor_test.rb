@@ -46,6 +46,16 @@ class RotorTest < Minitest::Test
     assert_equal 20, rotor.update_index_value(".", 1, {0=>50, 1=>17, 2=>54, 3=>26}, :decrypt)
   end
 
+  def test_update_index_value_for_encrypt_for_comma
+    rotor = Rotor.new
+    assert_equal 0, rotor.update_index_value(",", 1, {0=> 1, 1=> 1, 2=> 1, 3=> 1}, :encrypt)
+  end
+
+  def test_update_index_value_of_decrypt_for_a
+    rotor = Rotor.new
+    assert_equal -1, rotor.update_index_value("a", 1, {0=> 1, 1=> 1, 2=> 1, 3=> 1}, :decrypt)
+  end
+
   def test_collect_updated_index_values
     rotor = Rotor.new
     assert_equal [28, 37, 16, 11], rotor.collect_updated_index_value([["r", "u", "b", "y"]], {0=>50, 1=>17, 2=>54, 3=>26}, :encrypt)

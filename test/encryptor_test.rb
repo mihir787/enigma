@@ -30,20 +30,27 @@ class EncryptorTest < Minitest::Test
     assert_equal "file2.txt", encryptor.encrypted_file_name
   end
 
-  # def test_it_can_encrypt
-  #   encryptor = Encryptor.new("test_file.txt", "test_file4.txt")
-  #   encryptor.key = %w(9 9 9 0 0)
-  #   encryptor.encrypt("010101")
-  #   assert_equal "cdsuv496yfvo,8v", File.open("test_file4.txt").read
-  # end
-
-
   def test_it_can_encrypt
-    encryptor = Encryptor.new("test_file.txt", "test_file3.txt")
+    File.new("test_file4.txt", "w+")
+    encryptor = Encryptor.new("test_file.txt", "test_file4.txt")
     encryptor.key = %w(1 5 9 3 0)
-    encryptor.encrypt("100315")
-    assert_equal "cdsuv496yfvo,8v", File.open("test_file3.txt").read
+    encryptor.encrypt("031015")
+    assert_equal "6dsum496pfvo38v", File.open("test_file4.txt").read
   end
 
+  def test_it_can_encrypt_another_file
+    encryptor = Encryptor.new("test_file2.txt", "test_file3.txt")
+    encryptor.key = %w(9 9 9 4 0)
+    encryptor.encrypt("031115")
+    assert_equal ",et4s5 dvgwy99wdk", File.open("test_file3.txt").read
+  end
+
+  def test_it_can_encrypt_empty_message_by_returing_empty_file
+    File.new("test_file4.txt", "w+")
+    encryptor = Encryptor.new("test_file3.txt", "test_file4.txt")
+    encryptor.key = %w(0 0 9 3 0)
+    encryptor.encrypt("031015")
+    assert File.open("test_file4.txt").read.empty?
+  end
 
 end
