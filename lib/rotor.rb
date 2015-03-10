@@ -5,7 +5,7 @@ class Rotor
   attr_reader :character_map
 
   def initialize
-    @character_map = CharacterMap.new.generate_map
+    @character_map = CharacterMap.generate_map
   end
 
   def rotate(message, rotation_scale, task)
