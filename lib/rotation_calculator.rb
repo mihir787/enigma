@@ -7,9 +7,7 @@ class RotationCalculator
 
   def key_rotation(key = @key)
     key_rotation = key.map.with_index do |n, index|
-      if index < 4
-        n + @key[index + 1]
-      end
+        n + @key[index + 1] if index < 4
     end
     key_rotation.pop
     key_rotation

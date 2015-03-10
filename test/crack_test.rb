@@ -60,7 +60,7 @@ class CrackerTest < Minitest::Test
 
   def test_decrypt
     crack = Cracker.new("test_file.txt", "test_file3.txt", @date)
-    assert_equal ".k1gr.fsum4a8c4ss148x1y", crack.decrypt('10891')
+    assert_equal ".k1gr.fsum4a8c4ss148x1y", crack.rotate('10891')
   end
 
   def test_crack

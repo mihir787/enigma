@@ -42,19 +42,6 @@ class EncryptorTest < Minitest::Test
     assert_equal "ruby is awesome 2", encryptor.read_file
   end
 
-  def test_it_can_generate_offsets
-    encryptor = Encryptor.new("test_file2.txt", "test_encrypted.txt")
-    assert encryptor.generate_offsets.is_a? Hash
-    assert_equal 4, encryptor.generate_offsets.size
-  end
-
-  def test_it_rotates
-    encryptor = Encryptor.new("test_file2.txt", "test_encrypted.txt")
-    message = "fish"
-    rotation_calculator = {0 => 12, 1 => 19, 2 => 25, 3 => 26}
-    assert_equal "r1e7", encryptor.rotate(message, rotation_calculator, :encrypt)
-  end
-
   def test_it_can_output_encrypted_message
     message = "r1e7"
     encryptor = Encryptor.new("file.txt", "test_file3.txt")

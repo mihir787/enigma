@@ -1,4 +1,7 @@
-require_relative 'decryptor'
+require_relative 'date_offset'
+require_relative 'rotation_calculator'
+require_relative 'rotor'
+
 class Cracker
 
   attr_reader :encrypted_file_name, :cracked_file_name, :date
@@ -13,9 +16,10 @@ class Cracker
     number.rjust(5, "0")
   end
 
-  def decrypt(key)
-    decryptor = Decryptor.new(encrypted_file_name, cracked_file_name, key, date)
-    decrypted_message = decryptor.rotate(decryptor.read_file, decryptor.generate_offsets, :decrypt)
+  def rotate(key)
+    date_offset = DateOffset.new(@date).calculate_date_offset
+    rotation_guide = RotationCalculator.new(key.chars, date_offset).aggregate_rotations_guide
+    decrypted_message = Rotor.new.rotate(read_file, rotation_guide, :crack)
   end
 
   def match?(decrypted_message)
@@ -32,10 +36,15 @@ class Cracker
     end
   end
 
+  def read_file
+    File.open(encrypted_file_name).read
+  end
+
+
   def crack
     ("0".."99999").each do |n|
       key = pad_zeros(n)
-      decrypted_message = decrypt(key)
+      decrypted_message = rotate(key)
       if match?(decrypted_message)
         print_results(key)
         output(decrypted_message)

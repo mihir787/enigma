@@ -14,19 +14,11 @@ class Decryptor
   end
 
   def decrypt
-    encrypted_message = read_file
-    decrypted_message = rotate(encrypted_message, generate_offsets, :decrypt)
-    output(decrypted_message)
-    print_info
-  end
-
-  def generate_offsets
     date_offset = DateOffset.new(@date).calculate_date_offset
     rotation_calculator = RotationCalculator.new(@key.chars, date_offset).aggregate_rotations_guide
-  end
-
-  def rotate(message, rotation_calculator, task)
-    encrypted_message = Rotor.new.rotate(message, rotation_calculator, task)
+    decrypted_message = Rotor.new.rotate(read_file, rotation_calculator, :decrypt)
+    output(decrypted_message)
+    print_info
   end
 
   def print_info

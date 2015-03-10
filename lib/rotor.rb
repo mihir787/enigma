@@ -51,13 +51,11 @@ class Rotor
     end
   end
 
-  def collect_updated_index_value(formatted_message, rotation_scale, task) #method too long, refactor
+  def collect_updated_index_value(formatted_message, rotation_scale, task)
     updated_index_values = []
     formatted_message.each do |set|
       set.each.with_index do |char, index|
-        if valid_character?(char)
-          updated_index_values << update_index_value(char, index, rotation_scale, task)
-        end
+        updated_index_values << update_index_value(char, index, rotation_scale, task)  if valid_character?(char)
       end
     end
     updated_index_values

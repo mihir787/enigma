@@ -47,20 +47,6 @@ class DecryptorTest < Minitest::Test
     assert_equal "i love spongebob square pants, because he is cool..end..", decryptor.read_file
   end
 
-  def test_it_can_generate_offsets
-    decryptor = Decryptor.new("test_file2.txt", "test_file3.txt", @key, @date)
-    assert decryptor.generate_offsets.is_a? Hash
-    assert_equal 4, decryptor.generate_offsets.size
-  end
-
-
-  def test_it_rotates
-    decryptor = Decryptor.new("test_file2.txt", "test_encrypted.txt", @key, @date)
-    message = "r1e7"
-    rotation_calculator = {0 => 12, 1 => 19, 2 => 25, 3 => 26}
-    assert_equal "fish", decryptor.rotate(message, rotation_calculator, :decrypt)
-  end
-
   def test_it_can_output_decrypted_message
     message = "r1e7"
     decryptor = Decryptor.new("file.txt", "test_file3.txt", @key, @date)

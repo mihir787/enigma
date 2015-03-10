@@ -11,23 +11,15 @@ class Encryptor
   def initialize(message_file_name, encrypted_file_name)
     @message_file_name = message_file_name
     @encrypted_file_name = encrypted_file_name
+    @key = Key.new.rand_key
+    @date_offset = DateOffset.new
   end
 
   def encrypt
-    encrypted_message = rotate(read_file, generate_offsets, :encrypt)
+    print_offsets(@key.join, @date_offset.today_date)
+    rotation_guide = RotationCalculator.new(@key, @date_offset.calculate_date_offset).aggregate_rotations_guide
+    encrypted_message = Rotor.new.rotate(read_file, rotation_guide, :encrypt)
     output(encrypted_message)
-  end
-
-  def generate_offsets
-    key = Key.new.rand_key
-    date_offset = DateOffset.new
-    calculated_date_offset = date_offset.calculate_date_offset
-    print_offsets(key.join, date_offset.given_date)
-    rotation_calculator = RotationCalculator.new(key, calculated_date_offset).aggregate_rotations_guide
-  end
-
-  def rotate(message, rotation_calculator, task)
-    encrypted_message = Rotor.new.rotate(message, rotation_calculator, task)
   end
 
   def print_offsets(key, date)
