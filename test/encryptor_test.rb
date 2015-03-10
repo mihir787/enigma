@@ -30,25 +30,6 @@ class EncryptorTest < Minitest::Test
     assert_equal "file2.txt", encryptor.encrypted_file_name
   end
 
-  def test_it_can_read_contents_of_file
-    encryptor = Encryptor.new("test_file.txt", "test_encrypted.txt")
-
-    assert_equal "ruby is awesome", encryptor.read_file
-  end
-
-  def test_it_can_read_contents_of_another_file
-    encryptor = Encryptor.new("test_file2.txt", "test_encrypted.txt")
-
-    assert_equal "ruby is awesome 2", encryptor.read_file
-  end
-
-  def test_it_can_output_encrypted_message
-    message = "r1e7"
-    encryptor = Encryptor.new("file.txt", "test_file3.txt")
-    encryptor.output("r1e7")
-    assert_equal "r1e7", File.open("test_file3.txt").read
-  end
-
   def test_it_can_encrypt
     encryptor = Encryptor.new("test_file.txt", "test_file3.txt")
     encryptor.encrypt

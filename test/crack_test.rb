@@ -52,12 +52,6 @@ class CrackerTest < Minitest::Test
     refute crack.match?("fish")
   end
 
-  def test_output
-    crack = Cracker.new("test_file.txt", "test_file3.txt", @date)
-    crack.output("fish is great..end..")
-    assert_equal "fish is great..end..", File.open("test_file3.txt").read
-  end
-
   def test_decrypt
     crack = Cracker.new("test_file.txt", "test_file3.txt", @date)
     assert_equal ".k1gr.fsum4a8c4ss148x1y", crack.rotate('10891')
@@ -68,6 +62,5 @@ class CrackerTest < Minitest::Test
     crack_test.crack
     assert_equal "rupert is a cool cat ..end..", File.open("test_file2.txt").read
   end
-
 
 end

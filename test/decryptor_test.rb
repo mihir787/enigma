@@ -35,25 +35,6 @@ class DecryptorTest < Minitest::Test
     assert_equal "080315", decryptor.date
   end
 
-  def test_it_can_read_contents_of_file
-    decryptor = Decryptor.new("test_file.txt", "test_decrypted.txt", @key, @date)
-
-    assert_equal "ruby is awesome", decryptor.read_file
-  end
-
-  def test_it_can_read_contents_of_another_file
-    decryptor = Decryptor.new("test_file2.txt", "test_decrypted.txt", @key, @date)
-
-    assert_equal "i love spongebob square pants, because he is cool..end..", decryptor.read_file
-  end
-
-  def test_it_can_output_decrypted_message
-    message = "r1e7"
-    decryptor = Decryptor.new("file.txt", "test_file3.txt", @key, @date)
-    decryptor.output("r1e7")
-    assert_equal "r1e7", File.open("test_file3.txt").read
-  end
-
   def test_it_can_decrypt
     decryptor = Decryptor.new("test_file.txt", "test_file3.txt", @key, @date)
     decryptor.decrypt
