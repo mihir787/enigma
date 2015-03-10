@@ -6,7 +6,7 @@ module FileProcessor
   end
 
   def self.output(output_file_name, message)
-    file = File.open(output_file_name, 'w') do |file|
+    file = File.open(output_file_name, "w+") do |file|
       file.write(message)
     end
   end
