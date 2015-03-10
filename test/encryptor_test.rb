@@ -30,10 +30,19 @@ class EncryptorTest < Minitest::Test
     assert_equal "file2.txt", encryptor.encrypted_file_name
   end
 
+  # def test_it_can_encrypt
+  #   encryptor = Encryptor.new("test_file.txt", "test_file4.txt")
+  #   encryptor.key = %w(9 9 9 0 0)
+  #   encryptor.encrypt("010101")
+  #   assert_equal "cdsuv496yfvo,8v", File.open("test_file4.txt").read
+  # end
+
+
   def test_it_can_encrypt
     encryptor = Encryptor.new("test_file.txt", "test_file3.txt")
-    encryptor.encrypt
-    assert_equal 15, File.open("test_file3.txt").read.size
+    encryptor.key = %w(1 5 9 3 0)
+    encryptor.encrypt("100315")
+    assert_equal "cdsuv496yfvo,8v", File.open("test_file3.txt").read
   end
 
 

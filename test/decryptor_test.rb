@@ -12,6 +12,9 @@ class DecryptorTest < Minitest::Test
     @test_file2.close
     @test_file3 = File.new("test_file3.txt", "w+")
     @test_file3.close
+    @test_file4 = File.new("test_file4.txt", "w+")
+    @test_file4.write("o5m8ia3evonyp4syj")
+    @test_file4.close
 
     @key = "24384"
     @date = "080315"
@@ -41,5 +44,10 @@ class DecryptorTest < Minitest::Test
     assert_equal 15, File.open("test_file3.txt").read.size
   end
 
+  def test_it_can_decrypt_message_from_another_person
+    decryptor = Decryptor.new("test_file4.txt", "test_file3.txt", "41521", "030315")
+    decryptor.decrypt
+    assert_equal "do i work ..end..", File.open("test_file3.txt").read
+  end
 
 end

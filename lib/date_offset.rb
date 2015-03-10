@@ -25,7 +25,7 @@ class DateOffset
     squared_value.to_s[-4..-1]
   end
 
-  def calculate_date_offset
+  def calculate_date_offset(date = @given_date)
     if date_not_provided?
       today_date
     end
