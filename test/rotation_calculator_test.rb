@@ -35,7 +35,20 @@ class RotationCalculatorTest < Minitest::Test
     date_offset = %w(0 2 3 9)
     key = %w(1 8 7 9 4)
     rot_calc = RotationCalculator.new(key, date_offset)
+    assert_equal 18, rot_calc.aggregate_rotations_guide[0]
+    assert_equal 89, rot_calc.aggregate_rotations_guide[1]
     assert_equal 82, rot_calc.aggregate_rotations_guide[2]
+    assert_equal 103, rot_calc.aggregate_rotations_guide[3]
     assert_equal 4, rot_calc.aggregate_rotations_guide.size
   end
+
+  def test_aggregate_rotations_guide
+    rot_calc = RotationCalculator.new(%w(6 9 3 9 0), %w(1 3 5 6))
+    assert_equal 70, rot_calc.aggregate_rotations_guide[0]
+    assert_equal 96, rot_calc.aggregate_rotations_guide[1]
+    assert_equal 44, rot_calc.aggregate_rotations_guide[2]
+    assert_equal 96, rot_calc.aggregate_rotations_guide[3]
+    assert_equal 4, rot_calc.aggregate_rotations_guide.size
+  end
+
 end

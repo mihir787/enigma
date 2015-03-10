@@ -51,11 +51,11 @@ class DateOffsetTest < Minitest::Test
     assert_equal 30315, date_offset.remove_leading_zero
   end
 
-  # def test_calculate_date_offset_for_known_date
-  #   date_offset = DateOffset.new("171289")
-  #   assert_equal ["1", "5", "2", "1"], date_offset.calculate_date_offset
-  #   # assert_equal "171289", date_offset.given_date
-  # end
+  def test_calculate_date_offset_for_known_date
+    date_offset = DateOffset.new("171289")
+    assert_equal ["1", "5", "2", "1"], date_offset.calculate_date_offset
+    assert_equal "171289", date_offset.given_date
+  end
 
   def test_calculate_date_offset_for_unkown_date
     date_offset = DateOffset.new()
